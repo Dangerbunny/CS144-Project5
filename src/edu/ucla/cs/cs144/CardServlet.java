@@ -1,6 +1,7 @@
 package edu.ucla.cs.cs144;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,21 +15,16 @@ public class CardServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String desiredScheme = "https" ; // or "http"
-	    String usingScheme = request.getScheme();
-	    if (!desiredScheme.equals(usingScheme)) {
-	    	ServletContext context = request.getServletContext();
-	    	String httpsPort = context.getInitParameter("listenPort_https");
-	    	String httpPort = context.getInitParameter("listenPort_http");
-	    	
-		    String uri = request.getRequestURI();
-
-		    uri.replaceAll("http", "https");
-		    uri.replaceAll(httpPort, httpsPort);
-		    response.sendRedirect(response.encodeRedirectURL(uri.toString()));
-		    return;
-	    } else{
+	    if (request.isSecure() && request.getParameter("CCNum") != null) {
+	    	HttpSession session = request.getSession();
+	    	String CCNum = request.getParameter("CCNum");
+	    	Date d = new Date();
+	    	session.setAttribute("time", d.toString());
+	    	session.setAttribute("CCNum", CCNum);
+	    	//request.getRequestDispatcher("/confirmation.jsp").forward(request, response);
+	    	response.sendRedirect("confirmation.jsp");
+	    } else if (request.isSecure()){
 			request.getRequestDispatcher("/cardInput.jsp").forward(request, response);
-		} 
+		}
     }
 }

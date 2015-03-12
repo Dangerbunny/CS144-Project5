@@ -293,7 +293,7 @@ public class ItemServlet extends HttpServlet implements Servlet {
         
         Element root = doc.getDocumentElement();
         ItemData data = new ItemData();
-        data.itemId = root.getAttribute("ItemId");
+        data.itemId = root.getAttribute("ItemID");
         
         data.name = getElementTextByTagNameNR(root, "Name");
         ArrayList<String> categories = new ArrayList<String>();

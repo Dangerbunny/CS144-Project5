@@ -60,10 +60,11 @@
                 <strong>General Information: </strong>
                 <ul>
                     <c:if test="${not empty data.buyout}">
-                        <li>Buyout Price: ${data.buyout}</li>
-                        <form action='processCard' method='GET'>
-                            <input type='submit' value="Pay Now"/>
-                        </form>
+                        <li>Buyout Price: ${data.buyout}
+                            <form style="display: inline-block" action='processCard' method='GET'>
+                                <input type='submit' value="Buy Now"/>
+                            </form>
+                        </li>
                     </c:if>
                     <li>Initial Bid: ${data.initialBid}</li>
                     <li>Current Bid: ${data.currBid}</li>
