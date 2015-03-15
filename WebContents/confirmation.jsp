@@ -16,5 +16,6 @@
             <p>Time: ${time}</p>
         </div>  
     </c:if> 
+    <a href="http://localhost:1448/eBay/keywordSearch.html"> Return to search page </a>
     </body>
 </html>

@@ -2,10 +2,12 @@ Team: RC_Wonders
 
 Questions:
 
-1.  (4) -> (5)
+1.  (3) -> (4)
+    (4) -> (5)
     (5) -> (6)
+    3 -> 4 is reasonable as a customer would expect a page that they enter their credit card number into to already be HTTPS
 
-2. We ensure that the item was purchased exactly at the Buy_Price of that particular item by storing the Buy_Price of the item in an the HttpSession of the request before displaying the item information. When the user opts to buy the item, we do not retrieve the item price from the client side (ie a request param), and instead retrieve it from the session.
+2. We ensure that the item was purchased exactly at the Buy_Price of that particular item by storing the Buy_Price of the item in the HttpSession of the request before displaying the item information. When the user opts to buy the item, we do not retrieve the item price from the client side (ie a request param), and instead retrieve it directly from the session.
 
 Helpful Resources:
 
